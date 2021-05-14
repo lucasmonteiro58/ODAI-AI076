@@ -1,0 +1,137 @@
+/*******************
+ Box Sizing
+ *******************/
+html {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/****************************
+ Generic Margins and Paddings
+ ****************************/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p,
+pre,
+blockquote,
+figure,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+/*******************
+ Lists
+ *******************/
+ul {
+  list-style: none;
+}
+
+/*******************
+ Forms and buttons
+ *******************/
+input,
+textarea,
+select,
+button {
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+/* I usually expand input and textarea to full-width */
+input[type='text'],
+textarea {
+  width: 100%;
+}
+
+/* More friendly border */
+input,
+textarea,
+button {
+  border: none;
+}
+
+/* Some defaults for one-liner buttons */
+button {
+  border-radius: 0;
+  line-height: 1;
+  cursor: pointer;
+}
+
+button * {
+  pointer-events: none;
+}
+
+/***********************************
+ Easy responsive for media elements
+ ***********************************/
+svg,
+iframe,
+video,
+object,
+embed {
+  display: block;
+  max-width: 100%;
+}
+
+/*******************
+ Useful table styles
+ *******************/
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/*******************
+ The hidden attribute
+ *******************/
+[hidden] {
+  display: none !important;
+}
+
+/*******************
+ Noscript
+ *******************/
+noscript {
+  display: block;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+button:focus {
+  outline: 0;
+}
+
+@font-face {
+  font-family: Confortaa;
+  src: url('../fonts/Comfortaa-VariableFont_wght.ttf');
+}
+
+* {
+  font-family: Confortaa;
+  color: #282828;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 1000;
+}
+
+b {
+  font-family: Confortaa;
+  color: #007ec4;
+  font-weight: 1000;
+}

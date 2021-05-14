@@ -1,0 +1,18 @@
+$grey: #f0f0f0;
+$grey-dark: #282828;
+$blue: #007ec3;
+$orange: #ef7d00;
+
+$text-color: #282828;
+$primary: #007ec3;
+$secondary: #ef7d00;
+
+$roxo: #c7b2ce;
+$amarelo: #f7c044;
+$amarelo-claro: #ede0b0;
+$verde: #97e657;
+$vermelho: #f86d66;
+
+@mixin box-shadow {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
