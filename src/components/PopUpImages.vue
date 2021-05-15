@@ -1,12 +1,12 @@
 <template>
   <div v-show="showed" class="pop-up">
     <div class="backdrop"></div>
-    <div class="content">
+    <div ref="content" class="content">
       <div class="title">
         <span>{{ element.name }}</span>
       </div>
       <div class="image-section">
-        <div class="container">
+        <div class="container" @mouseenter="hoverImage1">
           <div class="imagem" :class="element.foto1pequena"></div>
           <div
             class="legenda"
@@ -15,7 +15,7 @@
             {{ element.legenda1 }}
           </div>
         </div>
-        <div class="container">
+        <div class="container" @mouseenter="hoverImage2">
           <div class="imagem" :class="element.foto2pequena"></div>
           <div class="legenda" :class="{ t11: element.id === 4 }">
             {{ element.legenda2 }}
@@ -34,6 +34,18 @@
       <button class="btn voltar btn-voltar" @click.prevent="close">
         <div class="text">Voltar</div>
       </button>
+    </div>
+    <div v-if="showImage1" class="image-hover">
+      <div class="imagem" :class="element.foto1"></div>
+      <div class="legenda" :class="{ t11: element.id === 4 }">
+        {{ element.legenda1 }}
+      </div>
+    </div>
+    <div v-if="showImage2" class="image-hover">
+      <div class="imagem" :class="element.foto2"></div>
+      <div class="legenda" :class="{ t11: element.id === 4 }">
+        {{ element.legenda2 }}
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +69,9 @@ export default {
   data() {
     return {
       showed: false,
-      ouvindo: false
+      ouvindo: false,
+      showImage1: false,
+      showImage2: false
     }
   },
   computed: {
@@ -85,7 +99,7 @@ export default {
   },
   methods: {
     showAnimation() {
-      scaleIn(this.$el.lastChild)
+      scaleIn(this.$refs.content)
     },
     close() {
       this.$emit('close', this.element.image)
@@ -98,6 +112,12 @@ export default {
         this.$emit('parar')
         this.ouvindo = true
       }
+    },
+    hoverImage1() {
+      this.showImage1 = true
+    },
+    hoverImage2() {
+      this.showImage2 = true
     }
   }
 }
@@ -106,6 +126,34 @@ export default {
 <style lang="scss" scoped>
 .title-popup {
   font-size: 32px;
+}
+
+.image-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffffbb;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .legenda {
+    width: 618px;
+    height: 97.45px;
+    background: #e5ddc7;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 0px 0px 8px 8px;
+    font-family: Confortaa;
+    font-weight: 600;
+    font-size: 22px;
+    color: #000000;
+    margin-top: -5px;
+    padding: 10px 5px;
+  }
 }
 .pop-up {
   position: absolute;
@@ -157,6 +205,7 @@ export default {
       display: flex;
       justify-content: space-between;
       width: 632px;
+
       .container {
         display: flex;
         flex-direction: column;
