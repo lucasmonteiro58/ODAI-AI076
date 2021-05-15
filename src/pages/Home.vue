@@ -22,7 +22,7 @@
           {{ information }}
         </div>
       </div>
-      <div class="maquina"></div>
+      <Drop class="maquina" @openPopUp="openPopUp"></Drop>
     </div>
     <div class="right-content">
       <div
@@ -32,27 +32,37 @@
         @mouseenter="showInformation(foto)"
         @mouseleave="hideInformation(foto)"
       >
-        <div :class="foto.image"></div>
+        <Drag
+          v-if="showDrags"
+          :data-transfer="foto.image"
+          :classname="foto.image"
+          :element="foto"
+        ></Drag>
       </div>
     </div>
     <PopUpImages
       v-if="showPopUpImage"
       :is-showed="showPopUpImage"
-      :element="fotos[4]"
+      :element="actualElementFoto"
+      @close="closePopUpImage"
     ></PopUpImages>
   </section>
 </template>
 <script>
 import { fotos } from '../consts/home'
 import PopUpImages from '../components/PopUpImages.vue'
+import Drag from '../components/Drag.vue'
+import Drop from '../components/Drop.vue'
 export default {
-  components: { PopUpImages },
+  components: { PopUpImages, Drag, Drop },
   data() {
     return {
-      showPopUpImage: false,
+      showPopUpImage: true,
       showInformationMachine: false,
       information: '',
-      fotos
+      fotos,
+      showDrags: true,
+      actualElementFoto: fotos[0]
     }
   },
   methods: {
@@ -60,8 +70,30 @@ export default {
       this.information = foto.name
       this.showInformationMachine = true
     },
-    hideInformation(foto) {
+    hideInformation() {
       this.showInformationMachine = false
+    },
+    openPopUp(el) {
+      this.actualElementFoto = this.getFoto(el)
+      this.showPopUpImage = true
+    },
+    closePopUpImage(el) {
+      this.fotos.map((i) => {
+        if (i.image === el) i.isCompleted = true
+        return i
+      })
+      this.showDrags = false
+      setTimeout(() => {
+        this.showDrags = true
+      }, 5)
+
+      this.showPopUpImage = false
+    },
+    getFoto(el) {
+      const fotinha = this.fotos.filter((i) => {
+        return i.image === el
+      })
+      return fotinha[0]
     }
   }
 }

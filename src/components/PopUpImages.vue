@@ -88,7 +88,7 @@ export default {
       scaleIn(this.$el.lastChild)
     },
     close() {
-      this.$emit('close')
+      this.$emit('close', this.element.image)
     },
     ouvir() {
       if (this.ouvindo) {

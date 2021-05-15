@@ -76,8 +76,8 @@ export function drop(el) {
 export function scaleIn(el) {
   anime({
     targets: el,
-    opacity: [0.5, 1],
-    scale: [0.4, 1],
+    opacity: [0.0, 1],
+    scale: [0.6, 1],
     duration: 500,
     easing: 'easeInQuint'
   })
