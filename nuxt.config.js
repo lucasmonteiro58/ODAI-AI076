@@ -7,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: 'ODAi',
+    title: 'ODAi-AI076',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=1440, user-scalable=yes' },

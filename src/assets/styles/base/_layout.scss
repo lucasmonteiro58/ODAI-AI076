@@ -48,22 +48,41 @@ body {
   justify-content: flex-end;
   gap: 6px;
   box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
   &.primary {
-    background-color: #f7c044;
-    width: 69px;
+    background-color: #67b1e7;
+    width: 60px;
     height: 67px;
     .text {
       margin-bottom: 2px;
-    }
-    .iconeajuda {
-      transform: scale(0.9);
+      font-family: Oxanium;
     }
     &:hover {
-      background-color: #fcecc6;
+      background-color: #80bbe7;
 
       .text,
       .icon {
-        opacity: 0.5;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.voltar {
+    background: #f1bc0c;
+    width: 169px;
+    height: 36px;
+    justify-content: center;
+    .text {
+      font-family: Oxanium;
+      font-size: 22px;
+    }
+    &:hover {
+      background-color: #f8d86d;
+
+      .text,
+      .icon {
+        opacity: 1;
       }
     }
   }

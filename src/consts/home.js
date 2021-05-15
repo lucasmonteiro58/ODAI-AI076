@@ -1,72 +1,75 @@
-export const erros = [
+export const fotos = [
   {
     id: 0,
-    name: 'escada',
-    isFind: false,
-    title: 'ESCADA SEM TELA',
-    image: 'popupescada',
-    circulo: 'c-escada',
+    name: 'Os prédios das escolas',
+    image: 'ilustrapredio',
+    isCompleted: false,
+    foto1: 'fotopredio1g',
+    foto1pequena: 'fotopredio1p',
+    legenda1: 'ESCOLA  NA CIDADE DE  CAMPINAS, EM SÃO PAULO, 1923.',
+    foto2: 'fotopredio2g',
+    foto2pequena: 'fotopredio2p',
+    legenda2: 'ESCOLA NO MUNICÍPIO DE GAVIÃO PEIXOTO, EM SÃO PAULO, 1936.',
     text:
-      'Uma escada pode ser um perigo se uma criança cair pelas laterais! O ideal é colocarmos telas para impedir que isso aconteça, muito bem!'
+      'OBSERVE QUE ANTIGAMENTE HAVIAM ESCOLAS MAIORES E ESCOLAS MENORES. VEJA O TELHADO, AS PORTAS, AS JANELAS E OUTROS DETALHES DAS ESCOLAS NO PASSADO. QUE DIFERENÇAS VOCÊ NOTA ENTRE AS ESCOLAS DO PASSADO E AS ESCOLAS DO PRESENTE?'
   },
   {
     id: 1,
-    name: 'mesa',
-    isFind: false,
-    image: 'popupfaca',
-    circulo: 'c-mesa',
-    title: 'FACAS NA MESA',
+    name: 'ALUNOS E ALUNAS',
+    image: 'ilustraalumni',
+    isCompleted: false,
+    foto1: 'fotoalumni1g',
+    foto1pequena: 'fotoalumni1p',
+    legenda1: 'ALUNAS DE ESCOLA EM LONDRES, NA INGLATERRA, EM 1908.',
+    foto2: 'fotoalumni2g',
+    foto2pequena: 'fotoalumni2p',
+    legenda2: 'ALUNOS DE ESCOLA EM LONDRES, NA INGLATERRA, EM 1962.',
     text:
-      'OLHA SÓ ESSAS PONTAS! CUIDADO! NÃO DEVEMOS DEIXAR FACAS POR AÍ. ELAS SÃO AFIADAS E PODEM CORTAR. DEIXE-AS SEMPRE GUARDADAS NAS GAVETAS.'
+      'NO PASSADO, MENINAS E MENINOS ESTUDAVAM EM SALAS SEPARADAS. HOJE ALUNAS E ALUNOS ESTUDAM JUNTOS NA MAIOR PARTE DAS ESCOLAS. QUE OUTROS DETALHES VOCÊ CONSEGUE VER NAS IMAGENS?'
   },
   {
     id: 2,
-    name: 'balde',
-    isFind: false,
-    title: 'BALDE NO CHÃO',
-    image: 'popupbalde',
-    circulo: 'c-balde',
+    name: 'Atividades',
+    image: 'ilustraatividade',
+    isCompleted: false,
+    foto1: 'fotoatividade1g',
+    foto1pequena: 'fotoatividade1p',
+    legenda1:
+      'Alunas realizando atividade física em escola de Londres. Data desconhecida.',
+    foto2: 'fotoatividade2g',
+    foto2pequena: 'fotoatividade2p',
+    legenda2: 'ALUNOS EM ATIVIDADE. ESCOLA DE LONDRES, NA INGLATERRA, EM 1941.',
     text:
-      'CUIDADO, CUIDADO! UM BALDE NO CHÃO É UM RISCO DE TOMBO! ALÉM DO QUÊ SE TIVEREM MATERIAIS DE LIMPEZA, ALGUMA CRIANÇA OU BICHINHO PODEM BEBER SEM QUERER! BOA OBSERVAÇÃO!'
+      'MENINAS E MENINOS TAMBÉM NÃO FAZIAM GINÁSTICA JUNTOS. E OBSERVE QUE A ORDEM E A DISCIPLINA ERAM MUITO IMPORTANTES NA HORA DE FAZER EXERCÍCIOS FÍSICOS. COMO AS ATIVIDADES FÍSICAS SÃO REALIZADAS NA SUA ESCOLA HOJE EM DIA?'
   },
   {
     id: 3,
-    name: 'remedios',
-    isFind: false,
-    title: 'CAIXA DE REMÉDIO',
-    image: 'popupremedio',
-    circulo: 'c-remedios',
+    name: 'Aulas',
+    image: 'ilustraaula',
+    isCompleted: false,
+    foto1: 'fotoaula1g',
+    foto1pequena: 'fotoaula1p',
+    legenda1: 'AULA EM ESCOLA DE LONDRES, NA INGLATERRA, EM 1929.',
+    foto2: 'fotoaula2g',
+    foto2pequena: 'fotoaula2p',
+    legenda2: 'AULA EM ESCOLA DO RIO DE JANEIRO, EM 1922.',
     text:
-      'NÃO PODEMOS DEIXAR CAIXAS DE REMÉDIO ONDE UMA CRIANÇA PODE MEXER. ELAS PODEM ENGOLIR ALGUMA COISA QUE NÃO DEVERIAM. DEVEMOS DEIXAR FECHADO E FORA DO ALCANCE. BEM NOTADO!'
+      'OS MENINOS E AS MENINAS NÃO APRENDIAM TODAS AS MESMAS MATÉRIAS. AS MENINAS, POR EXEMPLO, APRENDIAM ATIVIDADES COMO BORDAR E COSTURAR. HOJE, MENINOS E MENINAS APRENDEM OS MESMOS ASSUNTOS IGUALMENTE. AFINAL, TODAS AS CRIANÇAS TÊM OS MESMOS DIREITOS!'
   },
   {
     id: 4,
-    name: 'gaveta',
-    isFind: false,
-    title: 'MATERIAL DE COSTURA',
-    image: 'popupcostura',
-    circulo: 'c-agulhas',
+    name: 'diretores e professores',
+    image: 'ilustraprofs',
+    isCompleted: false,
+    foto1: 'fotoprof1g',
+    foto1pequena: 'fotoprof1p',
+    legenda1:
+      'DIRETOR E PROFESSORAS EM ESCOLA NA CIDADE DE  CAMPINAS, EM SÃO PAULO. Foto registrada entre 1910 e 1919.',
+    foto2: 'fotoprof2g',
+    foto2pequena: 'fotoprof2p',
+    legenda2:
+      'PROFESSORES EM ESCOLA NA CIDADE DE  CAMPINAS, EM SÃO PAULO. FOTO DE 1913.',
     text:
-      'AGULHAS E ALFINETES! TÃO PONTIAGUDAS E PERIGOSAS! PEÇA AOS ADULTOS PARA DEIXAR OBJETOS ASSIM LONGE DO ALCANCE DAS CRIANÇAS POIS, SE FURAR, AI! DÓI MUITO!'
-  },
-  {
-    id: 5,
-    name: 'tesoura',
-    isFind: false,
-    title: 'TESOURA NA MESA',
-    circulo: 'c-tesoura',
-    image: 'popuptesoura',
-    text:
-      'TESOURA CORTA E PODE FURAR! SE FOR USAR TESOURA, CHAME UM ADULTO PARA TE ORIENTAR E, AO TERMINAR, DEIXE-A BEM GUARDADA! ÓTIMA OBSERVAÇÃO!'
-  },
-  {
-    id: 6,
-    name: 'tomada',
-    isFind: false,
-    title: 'TOMADA DESTAMPADA',
-    circulo: 'c-tomada',
-    image: 'popuptomada',
-    text:
-      'QUE PERIGO! UMA TOMADA DESTAMPADA PODE SER MOTIVO PARA CHOQUES! PEÇAM PARA OS ADULTOS COLOCAREM PROTEÇÕES EM TODAS AS TOMADAS DA CASA! BEM OBSERVADO!'
+      'OS DIRETORES E OS PROFESSORES DA ESCOLA SE VESTIAM COM TRAJES FORMAIS. OS HOMENS VESTIAM TERNO E GRAVATA. AS MULHERES USAVAM VESTIDOS E SAIAS LONGAS. SEUS PROFESSORES E PROFESSORAS AINDA SE VESTEM ASSIM?'
   }
 ]
