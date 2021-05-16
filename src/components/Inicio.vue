@@ -2,7 +2,11 @@
   <div class="inicio-content">
     <div class="bginicial"></div>
     <div class="titulo"></div>
-    <div class="btn-iniciar" @click.prevent="iniciar"></div>
+    <div
+      class="btn-iniciar"
+      @click.prevent="iniciar"
+      @mouseenter="mouseOverSong"
+    ></div>
     <div class="container-cientista">
       <div class="cientista-braco"></div>
       <div class="cientista-corpo"></div>
@@ -23,6 +27,9 @@ export default {
   methods: {
     iniciar() {
       this.$emit('iniciar')
+    },
+    mouseOverSong() {
+      this.$emit('hover')
     }
   }
 }

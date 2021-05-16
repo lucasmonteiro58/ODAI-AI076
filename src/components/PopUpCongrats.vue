@@ -20,11 +20,16 @@
           class="btn primary btn-ouvir"
           :class="{ parar: ouvindo }"
           @click.prevent="ouvir"
+          @mouseenter="mouseOverSong"
         >
           <div class="icon iconeouvir"></div>
           <div class="text">{{ btnName }}</div>
         </button>
-        <button class="btn voltar btn-voltar" @click.prevent="close">
+        <button
+          class="btn voltar btn-voltar"
+          @click.prevent="close"
+          @mouseenter="mouseOverSong"
+        >
           <div class="text">Voltar</div>
         </button>
       </div>
@@ -78,6 +83,9 @@ export default {
     },
     close() {
       this.$emit('close')
+    },
+    mouseOverSong() {
+      this.$emit('hover')
     },
     ouvir() {
       if (this.ouvindo) {

@@ -1,16 +1,32 @@
 <template>
   <section class="container">
     <div class="left-content" :class="classIndex">
-      <button class="btn primary btn-inicio" @click.prevent="clickInicio">
+      <button
+        class="btn primary btn-inicio"
+        @click.prevent="clickInicio"
+        @mouseenter="mouseOverSong"
+      >
         <div class="icon iconeinicio"></div>
         <div class="text">Início</div>
       </button>
-      <div class="btn-ajuda" @click.prevent="clickOpenHelp"></div>
-      <button class="btn primary btn-som" @click.prevent="toogleSound">
+      <div
+        class="btn-ajuda"
+        @click.prevent="clickOpenHelp"
+        @mouseenter="mouseOverSong"
+      ></div>
+      <button
+        class="btn primary btn-som"
+        @click.prevent="toogleSound"
+        @mouseenter="mouseOverSong"
+      >
         <div class="icon" :class="soundClass"></div>
         <div class="text">Som</div>
       </button>
-      <button class="btn primary btn-creditos" @click.prevent="openCreditos">
+      <button
+        class="btn primary btn-creditos"
+        @click.prevent="openCreditos"
+        @mouseenter="mouseOverSong"
+      >
         <div class="icon iconecreditos"></div>
         <div class="text t10">Créditos</div>
       </button>
@@ -22,7 +38,12 @@
           {{ information }}
         </div>
       </div>
-      <Drop :class="classIndex" class="maquina" @openPopUp="openPopUp"></Drop>
+      <Drop
+        :class="classIndex"
+        class="maquina"
+        @openPopUp="openPopUp"
+        @dropou="droparAudio"
+      ></Drop>
     </div>
     <div
       v-if="!showIniciar"
@@ -48,13 +69,23 @@
       v-if="showPopUpImage"
       :is-showed="showPopUpImage"
       :element="actualElementFoto"
+      @hoverBtn="mouseOverSong"
       @close="closePopUpImage"
+      @hover="hoverImage"
+      @leave="leaveImage"
+      @ouvir="ouvirAudioImage"
+      @parar="pararAudioImage"
     ></PopUpImages>
-    <Inicio v-if="showIniciar" @iniciar="iniciarApp"></Inicio>
+    <Inicio
+      v-if="showIniciar"
+      @iniciar="iniciarApp"
+      @hover="mouseOverSong"
+    ></Inicio>
     <PopUpCongrats
       v-if="showPopUpCongrats"
       :is-showed="showPopUpCongrats"
       @close="closePopUpCongrats"
+      @hover="mouseOverSong"
     ></PopUpCongrats>
     <Help
       v-if="showHelp"
@@ -63,11 +94,15 @@
       @voltar="clickVoltarHelp"
       @close="clickCloseHelp"
       @avancar="clickAvancarHelp"
+      @hover="mouseOverSong"
+      @ouvir="ouvirFalaAjuda"
+      @parar="pararFalaAjuda"
     ></Help>
     <PopUpCreditos
       v-if="showCreditos"
       :is-showed="showCreditos"
       @close="closeCreditos"
+      @hover="mouseOverSong"
     ></PopUpCreditos>
   </section>
 </template>
@@ -115,9 +150,38 @@ export default {
     }
   },
   methods: {
+    droparAudio() {
+      this.audioMaquinaPlay()
+    },
+    ouvirFalaAjuda() {
+      this.falaPlaceholdergPlay()
+    },
+    pararFalaAjuda() {
+      this.falaPlaceholdergStop()
+    },
+    mouseOverSong() {
+      this.audioMouseoverPlay()
+    },
+    ouvirAudioImage() {
+      this.falaPlaceholdergPlay()
+    },
+    pararAudioImage() {
+      this.falaPlaceholdergStop()
+    },
+    hoverImage() {
+      this.audioMaximizarfotoPlay()
+    },
+    leaveImage() {
+      this.audioMaximizarfotoPlay()
+    },
     showInformation(foto) {
       this.information = foto.name
       this.showInformationMachine = true
+      this.falaPlaceholderpPlay()
+    },
+    hideInformation() {
+      this.showInformationMachine = false
+      this.falaPlaceholderpStop()
     },
     closeCreditos() {
       this.showCreditos = false
@@ -177,15 +241,14 @@ export default {
       this.showIniciar = false
       this.showHelp = true
     },
-    hideInformation() {
-      this.showInformationMachine = false
-    },
+
     openPopUp(el) {
-      this.audioClickPlay()
+      this.audioMaximinizarPlay()
       this.actualElementFoto = this.getFoto(el)
       this.showPopUpImage = true
     },
     closePopUpImage(el) {
+      this.falaPlaceholdergStop()
       this.audioClickPlay()
       this.fotos.map((i) => {
         if (i.image === el) i.isCompleted = true
@@ -206,6 +269,7 @@ export default {
         }
       }
       if (isComplete) {
+        this.audioSucessoPlay()
         this.showPopUpCongrats = true
       }
     },

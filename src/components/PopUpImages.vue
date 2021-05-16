@@ -31,7 +31,11 @@
         <div class="icon iconeouvir"></div>
         <div class="text">{{ btnName }}</div>
       </button>
-      <button class="btn voltar btn-voltar" @click.prevent="close">
+      <button
+        class="btn voltar btn-voltar"
+        @click.prevent="close"
+        @mouseenter="mouseOverSong"
+      >
         <div class="text">Voltar</div>
       </button>
     </div>
@@ -113,29 +117,36 @@ export default {
     showAnimation() {
       scaleIn(this.$refs.content)
     },
+    mouseOverSong() {
+      this.$emit('hoverBtn')
+    },
     close() {
       this.$emit('close', this.element.image)
     },
     ouvir() {
       if (this.ouvindo) {
-        this.$emit('ouvir')
+        this.$emit('parar')
         this.ouvindo = false
       } else {
-        this.$emit('parar')
+        this.$emit('ouvir')
         this.ouvindo = true
       }
     },
     hoverImage1() {
       if (this.imagesActivate) this.showImage1 = true
+      this.$emit('hover')
     },
     hoverImage2() {
       if (this.imagesActivate) this.showImage2 = true
+      this.$emit('hover')
     },
     hideImage1() {
       this.showImage1 = false
+      this.$emit('leave')
     },
     hideImage2() {
       this.showImage2 = false
+      this.$emit('leave')
     }
   }
 }

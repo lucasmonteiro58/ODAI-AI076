@@ -5,7 +5,11 @@
       <div v-if="isInitial && index === 0" class="bemvindo">
         SEJA BEM VINDA! SEJA BEM VINDO!
       </div>
-      <div class="btn-wrong" @click.prevent="clickClose"></div>
+      <div
+        class="btn-wrong"
+        @mouseenter="mouseOverSong"
+        @click.prevent="clickClose"
+      ></div>
       <div
         class="image-eureka"
         :class="[computedHelp[index].image, computedHelp[index].class]"
@@ -20,16 +24,26 @@
       ></div>
       <div class="button-section">
         <div class="top">
-          <button v-if="index !== 0" class="btn voltar" @click="voltarClick">
+          <button
+            v-if="index !== 0"
+            class="btn voltar"
+            @mouseenter="mouseOverSong"
+            @click="voltarClick"
+          >
             <div class="text">Voltar</div>
           </button>
-          <button class="btn voltar" @click="avancarClick">
+          <button
+            class="btn voltar"
+            @mouseenter="mouseOverSong"
+            @click="avancarClick"
+          >
             <div class="text">{{ nxtBtn }}</div>
           </button>
         </div>
         <button
           class="btn primary btn-ouvir"
           :class="{ parar: ouvindo }"
+          @mouseenter="mouseOverSong"
           @click.prevent="ouvir"
         >
           <div class="icon iconeouvir"></div>
@@ -77,20 +91,29 @@ export default {
   mounted() {},
   methods: {
     voltarClick() {
+      this.ouvindo = false
+      this.$emit('parar')
       this.$emit('voltar')
     },
+    mouseOverSong() {
+      this.$emit('hover')
+    },
     clickClose() {
+      this.ouvindo = false
+      this.$emit('parar')
       this.$emit('close')
     },
     avancarClick() {
+      this.ouvindo = false
+      this.$emit('parar')
       this.$emit('avancar')
     },
     ouvir() {
       if (this.ouvindo) {
-        this.$emit('ouvir')
+        this.$emit('parar')
         this.ouvindo = false
       } else {
-        this.$emit('parar')
+        this.$emit('ouvir')
         this.ouvindo = true
       }
     }

@@ -68,7 +68,11 @@
         <p>Beep1 por Freezeman do Freesound.org</p>
         <p>Success por Maxmakessounds do Freesound.org</p>
       </div>
-      <button class="btn voltar btn-voltar" @click.prevent="close">
+      <button
+        class="btn voltar btn-voltar"
+        @click.prevent="close"
+        @mouseenter="mouseOverSong"
+      >
         <div class="text">Voltar</div>
       </button>
     </div>
@@ -114,6 +118,9 @@ export default {
     },
     close() {
       this.$emit('close')
+    },
+    mouseOverSong() {
+      this.$emit('hover')
     }
   }
 }

@@ -57,6 +57,12 @@ const audios = {
     },
     falaPlaceholderpPlay() {
       if (this.soundState) this.falaPlaceholderp.play()
+    },
+    falaPlaceholderpStop() {
+      if (this.soundState) this.falaPlaceholderp.stop()
+    },
+    falaPlaceholdergStop() {
+      if (this.soundState) this.falaPlaceholderg.stop()
     }
   }
 }

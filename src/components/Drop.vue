@@ -86,6 +86,7 @@ export default {
     ondrop(event) {
       const item = event.relatedTarget
       const maquina = event.target
+      this.$emit('dropou')
 
       maquina.classList.add('shake-animation')
       const elemento = event.relatedTarget.getAttribute('data-transfer')
@@ -96,7 +97,7 @@ export default {
       setTimeout(() => {
         maquina.classList.remove('shake-animation')
         this.$emit('openPopUp', elemento)
-      }, 1000)
+      }, 1400)
     },
     resetOptionsState() {
       const element = this.draggableElements[0]
