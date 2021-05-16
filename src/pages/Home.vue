@@ -1,13 +1,13 @@
 <template>
   <section class="container">
-    <div class="left-content">
-      <button class="btn primary btn-inicio">
+    <div class="left-content" :class="classIndex">
+      <button class="btn primary btn-inicio" @click.prevent="clickInicio">
         <div class="icon iconeinicio"></div>
         <div class="text">Início</div>
       </button>
-      <div class="btn-ajuda"></div>
-      <button class="btn primary btn-som">
-        <div class="icon iconesomon"></div>
+      <div class="btn-ajuda" @click.prevent="clickOpenHelp"></div>
+      <button class="btn primary btn-som" @click.prevent="toogleSound">
+        <div class="icon" :class="soundClass"></div>
         <div class="text">Som</div>
       </button>
       <button class="btn primary btn-creditos">
@@ -16,15 +16,19 @@
       </button>
     </div>
     <div class="center-content">
-      <div class="titulo"></div>
-      <div class="tela">
+      <div class="titulo" :class="classIndex"></div>
+      <div class="tela" :class="classIndex">
         <div v-if="showInformationMachine" class="information-tela">
           {{ information }}
         </div>
       </div>
-      <Drop class="maquina" @openPopUp="openPopUp"></Drop>
+      <Drop :class="classIndex" class="maquina" @openPopUp="openPopUp"></Drop>
     </div>
-    <div class="right-content">
+    <div
+      v-if="!showIniciar"
+      class="right-content"
+      :class="'index-help' + indexHelp + isInitialHelp"
+    >
       <div
         v-for="foto in fotos"
         :key="foto.id"
@@ -47,6 +51,19 @@
       @close="closePopUpImage"
     ></PopUpImages>
     <Inicio v-if="showIniciar" @iniciar="iniciarApp"></Inicio>
+    <PopUpCongrats
+      v-if="showPopUpCongrats"
+      :is-showed="showPopUpCongrats"
+      @close="closePopUpCongrats"
+    ></PopUpCongrats>
+    <Help
+      v-if="showHelp"
+      :index="indexHelp"
+      :is-initial="isInitialHelp"
+      @voltar="clickVoltarHelp"
+      @close="clickCloseHelp"
+      @avancar="clickAvancarHelp"
+    ></Help>
   </section>
 </template>
 <script>
@@ -54,8 +71,11 @@ import { fotos } from '../consts/home'
 import PopUpImages from '../components/PopUpImages.vue'
 import Drag from '../components/Drag.vue'
 import Drop from '../components/Drop.vue'
+import PopUpCongrats from '../components/PopUpCongrats.vue'
+import Help from '../components/Help.vue'
+
 export default {
-  components: { PopUpImages, Drag, Drop },
+  components: { PopUpImages, Drag, Drop, PopUpCongrats, Help },
   data() {
     return {
       showPopUpImage: false,
@@ -65,7 +85,24 @@ export default {
       fotos,
       showDrags: true,
       actualElementFoto: fotos[0],
-      showIniciar: false
+      showIniciar: true,
+      isInitialHelp: true,
+      indexHelp: 0,
+      showHelp: false
+    }
+  },
+  computed: {
+    soundState() {
+      return this.$store.state.soundState
+    },
+    soundClass() {
+      if (this.soundState) return 'iconesomon'
+      else return 'iconesomoff'
+    },
+    classIndex() {
+      if (this.showHelp)
+        return `index-help${this.indexHelp}${this.isInitialHelp}`
+      else return ''
     }
   },
   methods: {
@@ -73,8 +110,47 @@ export default {
       this.information = foto.name
       this.showInformationMachine = true
     },
+    toogleSound() {
+      this.$store.commit('changeSoundState', !this.soundState)
+    },
+    closePopUpCongrats() {
+      this.showPopUpCongrats = false
+    },
+    clickVoltarHelp() {
+      this.indexHelp--
+    },
+    clickAvancarHelp() {
+      if (this.isInitialHelp) {
+        if (this.indexHelp === 3) {
+          this.showHelp = false
+          this.isInitialHelp = false
+          this.indexHelp = 0
+        } else {
+          this.indexHelp++
+        }
+      } else if (this.indexHelp === 2) {
+        this.showHelp = false
+        this.indexHelp = 0
+      } else {
+        this.indexHelp++
+      }
+    },
+    clickInicio() {
+      // resetar app
+      this.showIniciar = true
+    },
+    clickCloseHelp() {
+      this.indexHelp = 0
+      this.showHelp = false
+      this.isInitialHelp = false
+    },
+    clickOpenHelp() {
+      this.indexHelp = 0
+      this.showHelp = true
+    },
     iniciarApp() {
       this.showIniciar = false
+      this.showHelp = true
     },
     hideInformation() {
       this.showInformationMachine = false
@@ -123,6 +199,13 @@ export default {
 }
 
 .left-content {
+  &.index-help3true {
+    z-index: 700;
+  }
+
+  &.index-help2false {
+    z-index: 700;
+  }
   .btn-inicio {
     position: absolute;
     left: 40px;
@@ -133,14 +216,14 @@ export default {
     position: absolute;
     left: 40px;
     top: 573px;
-    z-index: 201;
+    z-index: 401;
   }
 
   .btn-creditos {
     position: absolute;
     left: 40px;
     top: 660px;
-    z-index: 201;
+    z-index: 401;
   }
 
   .btn-ajuda {
@@ -161,11 +244,27 @@ export default {
     position: absolute;
     left: 181px;
     top: 40px;
+
+    &.index-help1true {
+      z-index: 700;
+    }
+
+    &.index-help0false {
+      z-index: 700;
+    }
   }
   .tela {
     position: absolute;
     left: 196px;
     top: 128px;
+
+    &.index-help1true {
+      z-index: 700;
+    }
+
+    &.index-help0false {
+      z-index: 700;
+    }
 
     .information-tela {
       position: absolute;
@@ -184,6 +283,14 @@ export default {
     left: 181px;
     top: 260px;
     filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, 0.25));
+
+    &.index-help2true {
+      z-index: 700;
+    }
+
+    &.index-help1false {
+      z-index: 700;
+    }
   }
 }
 
@@ -196,5 +303,13 @@ export default {
   height: 692px;
   left: 763px;
   top: 38px;
+
+  &.index-help1true {
+    z-index: 700;
+  }
+
+  &.index-help0false {
+    z-index: 700;
+  }
 }
 </style>

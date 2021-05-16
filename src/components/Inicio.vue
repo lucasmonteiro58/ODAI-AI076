@@ -34,7 +34,7 @@ export default {
   background-color: #fff;
   top: 0;
   left: 0;
-  z-index: 200;
+  z-index: 400;
 
   .bg-inicial {
     position: absolute;

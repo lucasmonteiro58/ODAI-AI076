@@ -71,7 +71,7 @@ export default {
       inertia: true,
       // snap: this.initialSnapTarget,
       restrict: {
-        restriction: '.stage-container'
+        restriction: '#stage-container'
       },
       onmove: (event) => this.onMove(event),
       onstart: (event) => this.onStart(event),
@@ -96,8 +96,8 @@ export default {
       const deltaX = event.dx
       const deltaY = event.dy
       // width height fixed
-      const widthRatio = window.innerWidth / 980
-      const heightRatio = window.innerHeight / 720
+      const widthRatio = window.innerWidth / 1024
+      const heightRatio = window.innerHeight / 768
       const min = Math.min(widthRatio, heightRatio)
       const newX = initialX + deltaX / min
       const newY = initialY + deltaY / min

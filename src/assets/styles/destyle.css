@@ -140,3 +140,9 @@ b {
   color: #007ec4;
   font-weight: 1000;
 }
+
+strong {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+}
