@@ -35,18 +35,26 @@
         <div class="text">Voltar</div>
       </button>
     </div>
-    <div v-if="showImage1" class="image-hover">
-      <div class="imagem" :class="element.foto1"></div>
-      <div class="legenda" :class="{ t11: element.id === 4 }">
-        {{ element.legenda1 }}
+    <transition name="fade">
+      <div v-if="showImage1" class="image-hover" @click.prevent="hideImage1">
+        <span @mouseleave="hideImage1">
+          <div class="imagem" :class="element.foto1"></div>
+          <div class="legenda" :class="{ t11: element.id === 4 }">
+            {{ element.legenda1 }}
+          </div>
+        </span>
       </div>
-    </div>
-    <div v-if="showImage2" class="image-hover">
-      <div class="imagem" :class="element.foto2"></div>
-      <div class="legenda" :class="{ t11: element.id === 4 }">
-        {{ element.legenda2 }}
+    </transition>
+    <transition name="fade">
+      <div v-if="showImage2" class="image-hover" @click.prevent="hideImage2">
+        <span @mouseleave="hideImage2">
+          <div class="imagem" :class="element.foto2"></div>
+          <div class="legenda" :class="{ t11: element.id === 4 }">
+            {{ element.legenda2 }}
+          </div>
+        </span>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -71,7 +79,8 @@ export default {
       showed: false,
       ouvindo: false,
       showImage1: false,
-      showImage2: false
+      showImage2: false,
+      imagesActivate: false
     }
   },
   computed: {
@@ -93,6 +102,9 @@ export default {
   mounted() {
     if (this.isShowed) this.showed = true
     this.showAnimation()
+    setTimeout(() => {
+      this.imagesActivate = true
+    }, 600)
   },
   beforeDestroy() {
     fadeOut(this.$el)
@@ -114,10 +126,16 @@ export default {
       }
     },
     hoverImage1() {
-      this.showImage1 = true
+      if (this.imagesActivate) this.showImage1 = true
     },
     hoverImage2() {
-      this.showImage2 = true
+      if (this.imagesActivate) this.showImage2 = true
+    },
+    hideImage1() {
+      this.showImage1 = false
+    },
+    hideImage2() {
+      this.showImage2 = false
     }
   }
 }
@@ -126,6 +144,14 @@ export default {
 <style lang="scss" scoped>
 .title-popup {
   font-size: 32px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 .image-hover {
@@ -140,8 +166,20 @@ export default {
   flex-direction: column;
   justify-content: center;
 
+  span {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transform: scale(1);
+  }
+
+  .imagem {
+    width: 622px;
+  }
+
   .legenda {
-    width: 618px;
+    width: 622px;
     height: 97.45px;
     background: #e5ddc7;
     border: 3px solid #000000;

@@ -46,6 +46,7 @@
       :element="actualElementFoto"
       @close="closePopUpImage"
     ></PopUpImages>
+    <Inicio v-if="showIniciar" @iniciar="iniciarApp"></Inicio>
   </section>
 </template>
 <script>
@@ -57,18 +58,23 @@ export default {
   components: { PopUpImages, Drag, Drop },
   data() {
     return {
-      showPopUpImage: true,
+      showPopUpImage: false,
       showInformationMachine: false,
+      showPopUpCongrats: false,
       information: '',
       fotos,
       showDrags: true,
-      actualElementFoto: fotos[0]
+      actualElementFoto: fotos[0],
+      showIniciar: false
     }
   },
   methods: {
     showInformation(foto) {
       this.information = foto.name
       this.showInformationMachine = true
+    },
+    iniciarApp() {
+      this.showIniciar = false
     },
     hideInformation() {
       this.showInformationMachine = false
@@ -86,8 +92,19 @@ export default {
       setTimeout(() => {
         this.showDrags = true
       }, 5)
-
       this.showPopUpImage = false
+      this.verificarCompleto()
+    },
+    verificarCompleto() {
+      let isComplete = true
+      for (let i = 0; i < fotos.length; i++) {
+        if (fotos[i].isCompleted === false) {
+          isComplete = false
+        }
+      }
+      if (isComplete) {
+        this.showPopUpCongrats = true
+      }
     },
     getFoto(el) {
       const fotinha = this.fotos.filter((i) => {
@@ -116,12 +133,14 @@ export default {
     position: absolute;
     left: 40px;
     top: 573px;
+    z-index: 201;
   }
 
   .btn-creditos {
     position: absolute;
     left: 40px;
     top: 660px;
+    z-index: 201;
   }
 
   .btn-ajuda {
