@@ -245,6 +245,7 @@ export default {
     },
     clickInicio() {
       // resetar app
+      this.resetar()
       this.showIniciar = true
       this.audioClickPlay()
     },
@@ -301,6 +302,13 @@ export default {
         return i.image === el
       })
       return fotinha[0]
+    },
+    resetar() {
+      this.isInitialHelp = true
+      this.fotos.map((i) => {
+        i.isCompleted = false
+        return i
+      })
     }
   }
 }
