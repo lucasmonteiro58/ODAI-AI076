@@ -109,6 +109,7 @@ export default {
       const target = event.target
       target.classList.add('start-drag')
       event.target.style.transition = '0s'
+      this.$emit('startdrag')
     },
     onEnd(event) {
       const target = event.target

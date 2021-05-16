@@ -43,6 +43,7 @@
         class="maquina"
         @openPopUp="openPopUp"
         @dropou="droparAudio"
+        @dropfinish="desativeBlock"
       ></Drop>
     </div>
     <div
@@ -62,6 +63,7 @@
           :data-transfer="foto.image"
           :classname="foto.image"
           :element="foto"
+          @startdrag="startDrag"
         ></Drag>
       </div>
     </div>
@@ -86,6 +88,8 @@
       :is-showed="showPopUpCongrats"
       @close="closePopUpCongrats"
       @hover="mouseOverSong"
+      @ouvir="ouvirFalaCongrats"
+      @parar="pararFalaCongrats"
     ></PopUpCongrats>
     <Help
       v-if="showHelp"
@@ -104,6 +108,7 @@
       @close="closeCreditos"
       @hover="mouseOverSong"
     ></PopUpCreditos>
+    <div v-if="showBlock" class="block-images"></div>
   </section>
 </template>
 <script>
@@ -132,13 +137,15 @@ export default {
       isInitialHelp: true,
       indexHelp: 0,
       showHelp: false,
-      showCreditos: false
+      showCreditos: false,
+      showBlock: false
     }
   },
   computed: {
     soundState() {
       return this.$store.state.soundState
     },
+
     soundClass() {
       if (this.soundState) return 'iconesomon'
       else return 'iconesomoff'
@@ -151,12 +158,28 @@ export default {
   },
   methods: {
     droparAudio() {
+      this.showBlock = true
       this.audioMaquinaPlay()
+    },
+    activeBlock() {
+      this.showBlock = true
+    },
+    desativeBlock() {
+      this.showBlock = false
+    },
+    startDrag() {
+      this.falaPlaceholderpStop()
     },
     ouvirFalaAjuda() {
       this.falaPlaceholdergPlay()
     },
     pararFalaAjuda() {
+      this.falaPlaceholdergStop()
+    },
+    ouvirFalaCongrats() {
+      this.falaPlaceholdergPlay()
+    },
+    pararFalaCongrats() {
       this.falaPlaceholdergStop()
     },
     mouseOverSong() {
@@ -402,5 +425,14 @@ export default {
   &.index-help0false {
     z-index: 700;
   }
+}
+
+.block-images {
+  position: absolute;
+  z-index: 1000;
+  width: 226px;
+  height: 699px;
+  top: 37px;
+  right: 37px;
 }
 </style>

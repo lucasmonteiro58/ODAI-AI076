@@ -82,6 +82,7 @@ export default {
       fromTop(this.$el.lastChild)
     },
     close() {
+      this.$emit('parar')
       this.$emit('close')
     },
     mouseOverSong() {
@@ -89,10 +90,10 @@ export default {
     },
     ouvir() {
       if (this.ouvindo) {
-        this.$emit('ouvir')
+        this.$emit('parar')
         this.ouvindo = false
       } else {
-        this.$emit('parar')
+        this.$emit('ouvir')
         this.ouvindo = true
       }
     }

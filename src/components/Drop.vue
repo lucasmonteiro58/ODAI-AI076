@@ -90,12 +90,12 @@ export default {
 
       maquina.classList.add('shake-animation')
       const elemento = event.relatedTarget.getAttribute('data-transfer')
-      console.log(elemento)
 
       item.style.opacity = '0'
 
       setTimeout(() => {
         maquina.classList.remove('shake-animation')
+        this.$emit('dropfinish')
         this.$emit('openPopUp', elemento)
       }, 1400)
     },
@@ -114,7 +114,7 @@ export default {
       element.dropped.length = 0
       const selector = `#ID-${element.nome}`
       const draggable = document.querySelector(selector).firstElementChild
-      console.log(draggable)
+
       draggable.setAttribute('data-x', 0)
       draggable.setAttribute('data-y', 0)
       draggable.style.opacity = '0'
@@ -140,7 +140,6 @@ export default {
       element.dropped.length = 0
       const selector = `#ID-${element.nome}`
       const draggable = document.querySelector(selector).firstElementChild
-      console.log(draggable)
       draggable.setAttribute('data-x', 0)
       draggable.setAttribute('data-y', 0)
       draggable.style.filter = 'drop-shadow(0px 0px 6px #ff0000)'
