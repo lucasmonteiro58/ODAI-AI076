@@ -1,0 +1,21 @@
+click -> ao clicar em qualquer botão
+
+maquina -> ao soltar uma ilustração na máquina do tempo
+
+maximizar -> após terminar a animação e áudio 'máquina', junto com o a maximização da tela das fotografias
+
+maximizarfoto -> ao entrar com o mouse em uma fotografia para ampliá-la
+
+minimizar -> botão de voltar da tela de fotografias / ao sair com o mouse da fotografia ampliada
+
+mouseover -> cursor passa por cima de botões
+
+placeholderg -> ao clicar em botões Ouvir.
+Obs: ao clicar em ouvir o audio fica tocando e o botão assume uma cor verde escrito parar. Se clicar o áudio para. Também para se o aluno clicar em voltar e sair da tela de fotografias ou do tutorial.
+
+placeholderp -> ao dar mouseover nas ilustrações à direita. 
+
+Obs: os dois audios acima serão substituídos pelas narrações que serão fornecidas pela equipe da Desenrolado. Ambos os audios acabam com efeito de fade out, e não corte repentino.
+
+sucesso -> ao aparecer a tela de congratulações.
+

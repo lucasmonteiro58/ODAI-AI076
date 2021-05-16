@@ -199,7 +199,7 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 500;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
