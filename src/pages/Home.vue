@@ -63,7 +63,7 @@
           :data-transfer="foto.image"
           :classname="foto.image"
           :element="foto"
-          @startdrag="startDrag"
+          @startdrag="startDrag(foto.image)"
         ></Drag>
       </div>
     </div>
@@ -138,7 +138,8 @@ export default {
       indexHelp: 0,
       showHelp: false,
       showCreditos: false,
-      showBlock: false
+      showBlock: false,
+      firstCongrats: true
     }
   },
   computed: {
@@ -167,44 +168,44 @@ export default {
     desativeBlock() {
       this.showBlock = false
     },
-    startDrag() {
-      this.falaPlaceholderpStop()
+    startDrag(el) {
+      this.stopNomeImage(el)
     },
-    ouvirFalaAjuda() {
-      this.falaPlaceholdergPlay()
+    ouvirFalaAjuda(el) {
+      this.playAjudaAudio(el)
     },
-    pararFalaAjuda() {
-      this.falaPlaceholdergStop()
+    pararFalaAjuda(el) {
+      this.stopAjudaAudio(el)
     },
     ouvirFalaCongrats() {
-      this.falaPlaceholdergPlay()
+      this.playFalaCongrats()
     },
     pararFalaCongrats() {
-      this.falaPlaceholdergStop()
+      this.stopFalaCongrats()
     },
     mouseOverSong() {
       this.audioMouseoverPlay()
     },
-    ouvirAudioImage() {
-      this.falaPlaceholdergPlay()
+    ouvirAudioImage(image) {
+      this.playFalaImages(image)
     },
-    pararAudioImage() {
-      this.falaPlaceholdergStop()
+    pararAudioImage(image) {
+      this.stopFalaImages(image)
     },
     hoverImage() {
       this.audioMaximizarfotoPlay()
     },
     leaveImage() {
-      this.audioMaximizarfotoPlay()
+      this.audioMinimizarFotoPlay()
     },
     showInformation(foto) {
       this.information = foto.name
       this.showInformationMachine = true
-      this.falaPlaceholderpPlay()
+      this.playNomeImage(foto.image)
     },
-    hideInformation() {
+    hideInformation(foto) {
       this.showInformationMachine = false
-      this.falaPlaceholderpStop()
+      this.stopNomeImage(foto.image)
     },
     closeCreditos() {
       this.showCreditos = false
@@ -274,6 +275,7 @@ export default {
     closePopUpImage(el) {
       this.falaPlaceholdergStop()
       this.audioClickPlay()
+      this.audioMinimizarFotoPlay()
       this.fotos.map((i) => {
         if (i.image === el) i.isCompleted = true
         return i
@@ -292,9 +294,10 @@ export default {
           isComplete = false
         }
       }
-      if (isComplete) {
+      if (isComplete && this.firstCongrats) {
         this.audioSucessoPlay()
         this.showPopUpCongrats = true
+        this.firstCongrats = false
       }
     },
     getFoto(el) {
@@ -305,6 +308,7 @@ export default {
     },
     resetar() {
       this.isInitialHelp = true
+      this.firstCongrats = true
       this.fotos.map((i) => {
         i.isCompleted = false
         return i

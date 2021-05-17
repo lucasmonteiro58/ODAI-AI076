@@ -121,14 +121,15 @@ export default {
       this.$emit('hoverBtn')
     },
     close() {
+      this.$emit('parar', this.element.image)
       this.$emit('close', this.element.image)
     },
     ouvir() {
       if (this.ouvindo) {
-        this.$emit('parar')
+        this.$emit('parar', this.element.image)
         this.ouvindo = false
       } else {
-        this.$emit('ouvir')
+        this.$emit('ouvir', this.element.image)
         this.ouvindo = true
       }
     },

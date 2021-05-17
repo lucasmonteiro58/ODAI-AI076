@@ -19,7 +19,7 @@ function runBlock(context) {
 function isAssetReady() {
   setTimeout(() => {
     document.querySelector('.loading-screen').classList.add('not-ready')
-  }, 2400)
+  }, 1000)
 }
 
 // ----------------------------------------------------------

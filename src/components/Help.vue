@@ -92,7 +92,7 @@ export default {
   methods: {
     voltarClick() {
       this.ouvindo = false
-      this.$emit('parar')
+      this.$emit('parar', this.computedHelp[this.index].id)
       this.$emit('voltar')
     },
     mouseOverSong() {
@@ -100,20 +100,20 @@ export default {
     },
     clickClose() {
       this.ouvindo = false
-      this.$emit('parar')
+      this.$emit('parar', this.computedHelp[this.index].id)
       this.$emit('close')
     },
     avancarClick() {
       this.ouvindo = false
-      this.$emit('parar')
+      this.$emit('parar', this.computedHelp[this.index].id)
       this.$emit('avancar')
     },
     ouvir() {
       if (this.ouvindo) {
-        this.$emit('parar')
+        this.$emit('parar', this.computedHelp[this.index].id)
         this.ouvindo = false
       } else {
-        this.$emit('ouvir')
+        this.$emit('ouvir', this.computedHelp[this.index].id)
         this.ouvindo = true
       }
     }
