@@ -14,7 +14,7 @@
           GOSTOU DA MINHA INVENÇÃO? <br /><br />INFELIZMENTE AS MÁQUINAS DO
           TEMPO NÃO EXISTEM. MAS SERIA DIVERTIDO SE EXISTISSEM, NÃO É MESMO?
           HAHAHAHA <br /><br />
-          CLIQUE NO BOTÃO VOLTAR PARA NOVAMENTE AS FOTOGRAFIAS!
+          CLIQUE NO BOTÃO VOLTAR PARA VER NOVAMENTE AS FOTOGRAFIAS!
         </div>
         <button
           class="btn primary btn-ouvir"
