@@ -13,24 +13,24 @@ import placeholderg from '../assets/audios/placeholderg.wav'
 import placeholderp from '../assets/audios/placeholderp.wav'
 
 // mudar audios falas aqui
-import imagepredios from '../assets/audios/placeholderg.wav'
-import imagealunos from '../assets/audios/placeholderg.wav'
-import imageatividades from '../assets/audios/placeholderg.wav'
-import imagediretores from '../assets/audios/placeholderg.wav'
-import imageaulas from '../assets/audios/placeholderg.wav'
+import ajuda0 from '../assets/audios/falas/help0.mp3'
+import ajuda1 from '../assets/audios/falas/help1.mp3'
+import ajuda2 from '../assets/audios/falas/help2.mp3'
+import ajuda3 from '../assets/audios/falas/help3.mp3'
 
-import audiocongrats from '../assets/audios/placeholderg.wav'
+import imagepredios from '../assets/audios/falas/ex-predios-escolas.mp3'
+import imagealunos from '../assets/audios/falas/ex-alunos.mp3'
+import imageatividades from '../assets/audios/falas/ex-atividades.mp3'
+import imagediretores from '../assets/audios/falas/ex-diretores-professores.mp3'
+import imageaulas from '../assets/audios/falas/ex-aulas.mp3'
 
-import ajuda0 from '../assets/audios/placeholderg.wav'
-import ajuda1 from '../assets/audios/placeholderg.wav'
-import ajuda2 from '../assets/audios/placeholderg.wav'
-import ajuda3 from '../assets/audios/placeholderg.wav'
+import nomepredios from '../assets/audios/falas/in-predios-escolas.wav'
+import nomealunos from '../assets/audios/falas/in-alunos.wav'
+import nomeatividades from '../assets/audios/falas/in-atividades.wav'
+import nomediretores from '../assets/audios/falas/in-diretores-professores.wav'
+import nomeaulas from '../assets/audios/falas/in-aulas.wav'
 
-import nomepredios from '../assets/audios/placeholderp.wav'
-import nomealunos from '../assets/audios/placeholderp.wav'
-import nomeatividades from '../assets/audios/placeholderp.wav'
-import nomediretores from '../assets/audios/placeholderp.wav'
-import nomeaulas from '../assets/audios/placeholderp.wav'
+import audiocongrats from '../assets/audios/falas/congrats.mp3'
 
 const audios = {
   setup() {
