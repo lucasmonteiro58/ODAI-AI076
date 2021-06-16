@@ -9,7 +9,7 @@
         <div class="container" @mouseenter="hoverImage1">
           <div class="imagem" :class="element.foto1pequena"></div>
           <div
-            class="legenda"
+            class="legenda t11"
             :class="{ t11: element.id === 4 || element.id === 2 }"
           >
             {{ element.legenda1 }}
@@ -17,7 +17,7 @@
         </div>
         <div class="container" @mouseenter="hoverImage2">
           <div class="imagem" :class="element.foto2pequena"></div>
-          <div class="legenda" :class="{ t11: element.id === 4 }">
+          <div class="legenda t11" :class="{ t11: element.id === 4 }">
             {{ element.legenda2 }}
           </div>
         </div>

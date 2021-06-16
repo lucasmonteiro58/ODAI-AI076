@@ -3,7 +3,7 @@
     <div class="backdrop"></div>
     <div class="content" :class="computedHelp[index].class">
       <div v-if="isInitial && index === 0" class="bemvindo">
-        SEJA BEM VINDA! SEJA BEM VINDO!
+        SEJA BEM-VINDA! SEJA BEM-VINDO!
       </div>
       <div
         class="btn-wrong"

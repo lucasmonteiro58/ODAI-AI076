@@ -2,7 +2,7 @@ export const helpsInicio = [
   {
     id: 0,
     text:
-      'EU SOU O DR. EUREKA, O CIENTISTA, E QUERO TE MOSTRAR A MINHA MAIS NOVA INVENÇÃO: UMA MÁQUINA DO TEMPO! LEGAL NÉ?! <br/> <br/>VOCÊ QUER EXPERIMENTAR? Então, Vamos brincar de viajar no tempo para ver ALGUMAS escolas e estudantes do passado! <br/><br/>clique em <strong>avançar</strong> para aPRENDER a usar a máquina.',
+      'EU SOU O DR. EUREKA, O CIENTISTA, E QUERO TE MOSTRAR A MINHA MAIS NOVA INVENÇÃO: UMA MÁQUINA DO TEMPO! LEGAL, NÉ?! <br/> <br/>VOCÊ QUER EXPERIMENTAR? Então, Vamos brincar de viajar no tempo para ver ALGUMAS escolas e estudantes do passado! <br/><br/>clique em <strong>avançar</strong> para aPRENDER a usar a máquina.',
     image: 'eureka',
     class: 'help-0'
   },
